@@ -1,4 +1,4 @@
-package com.obiomaofoamalu.biimovies.launch.database
+package com.obiomaofoamalu.biimovies.database
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Index

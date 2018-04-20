@@ -1,10 +1,14 @@
-package com.obiomaofoamalu.biimovies.launch.database
+package com.obiomaofoamalu.biimovies.database
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 
 @Database(entities = arrayOf(Movie::class, Genre::class, Country::class), version = 1)
-abstract class AppDatabase : RoomDatabase() {
+abstract class BiiDatabase : RoomDatabase() {
+
+    companion object {
+        val NAME: String = BiiDatabase::class.java.simpleName
+    }
 
     abstract fun movieDAO(): MovieDAO
 

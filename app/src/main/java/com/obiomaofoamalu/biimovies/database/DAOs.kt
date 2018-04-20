@@ -1,4 +1,4 @@
-package com.obiomaofoamalu.biimovies.launch.database
+package com.obiomaofoamalu.biimovies.database
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
