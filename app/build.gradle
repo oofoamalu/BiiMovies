@@ -43,4 +43,7 @@ dependencies {
     // Dagger
     implementation 'com.google.dagger:dagger:2.11'
     kapt 'com.google.dagger:dagger-compiler:2.11'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.2'
 }
