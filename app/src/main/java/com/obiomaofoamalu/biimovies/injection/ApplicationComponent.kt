@@ -1,6 +1,6 @@
 package com.obiomaofoamalu.biimovies.injection
 
-import android.app.LauncherActivity
+import com.obiomaofoamalu.biimovies.launch.LaunchActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -8,5 +8,5 @@ import javax.inject.Singleton
 @Component(modules=arrayOf(ApplicationModule::class, DatabaseModule::class))
 interface ApplicationComponent {
 
-    fun inject(activity: LauncherActivity)
+    fun inject(activity: LaunchActivity)
 }
