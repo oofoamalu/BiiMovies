@@ -1,7 +1,6 @@
 package com.obiomaofoamalu.biimovies.service
 
 import com.google.gson.annotations.SerializedName
-import com.obiomaofoamalu.biimovies.database.Country
 import com.obiomaofoamalu.biimovies.database.Genre
 
 data class MovieResponse (val id: Int,
@@ -17,7 +16,7 @@ data class DiscoverMovieResponse(
         @SerializedName("results") val movies: ArrayList<MovieResponse>)
 
 data class MovieDetailResponse(@SerializedName("runtime") val duration: Int,
-                               @SerializedName("production_countries") val countries: ArrayList<Country>)
+                               @SerializedName("production_countries") val countries: ArrayList<CountryResponse>)
 
 data class GenreResponse(@SerializedName("genres") val genres: ArrayList<Genre>)
 
