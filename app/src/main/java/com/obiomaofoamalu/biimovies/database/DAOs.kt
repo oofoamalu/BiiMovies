@@ -5,21 +5,21 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 
 @Dao
-interface MovieDAO {
+interface LocalMovieDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveMovies(movies: List<Movie>)
 }
 
 @Dao
-interface GenreDAO {
+interface LocalGenreDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveGenres(genres: List<Genre>)
 }
 
 @Dao
-interface CountryDAO {
+interface LocalCountryDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveCountries(countries: List<Country>)
