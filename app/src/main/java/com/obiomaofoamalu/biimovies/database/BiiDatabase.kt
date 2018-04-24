@@ -12,9 +12,9 @@ abstract class BiiDatabase : RoomDatabase() {
         val NAME: String = BiiDatabase::class.java.simpleName
     }
 
-    abstract fun movieDAO(): MovieDAO
+    abstract fun movieDAO(): LocalMovieDAO
 
-    abstract fun genreDAO(): GenreDAO
+    abstract fun genreDAO(): LocalGenreDAO
 
-    abstract fun countryDAO(): CountryDAO
+    abstract fun countryDAO(): LocalCountryDAO
 }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.obiomaofoamalu.biimovies">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".BiiApplication"
         android:allowBackup="true"
