@@ -1,7 +1,7 @@
-package com.obiomaofoamalu.biimovies.service
+package com.obiomaofoamalu.biimovies.data.service
 
 import com.google.gson.annotations.SerializedName
-import com.obiomaofoamalu.biimovies.database.Genre
+import com.obiomaofoamalu.biimovies.data.database.Genre
 
 data class MovieResponse (val id: Int,
                           val title: String,

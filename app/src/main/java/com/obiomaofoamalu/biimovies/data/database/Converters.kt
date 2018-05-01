@@ -1,4 +1,4 @@
-package com.obiomaofoamalu.biimovies.database
+package com.obiomaofoamalu.biimovies.data.database
 
 import android.arch.persistence.room.TypeConverter
 import com.google.gson.Gson

@@ -1,6 +1,6 @@
-package com.obiomaofoamalu.biimovies.service
+package com.obiomaofoamalu.biimovies.data.service
 
-import com.obiomaofoamalu.biimovies.database.Genre
+import com.obiomaofoamalu.biimovies.data.database.Genre
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
 import junit.framework.Assert.assertTrue

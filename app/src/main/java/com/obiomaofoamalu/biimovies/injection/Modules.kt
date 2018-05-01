@@ -5,9 +5,11 @@ import android.content.Context
 import android.content.res.Resources
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.obiomaofoamalu.biimovies.BiiApplication
-import com.obiomaofoamalu.biimovies.database.BiiDatabase
-import com.obiomaofoamalu.biimovies.service.BiiService
-import com.obiomaofoamalu.biimovies.service.ServiceInfoProvider
+import com.obiomaofoamalu.biimovies.data.database.BiiDatabase
+import com.obiomaofoamalu.biimovies.data.database.LocalCountryDAO
+import com.obiomaofoamalu.biimovies.data.database.LocalGenreDAO
+import com.obiomaofoamalu.biimovies.data.database.LocalMovieDAO
+import com.obiomaofoamalu.biimovies.data.service.*
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -31,12 +33,24 @@ class ApplicationModule(private val mApplication: BiiApplication) {
 }
 
 @Module
-class DatabaseModule {
+class DataModule {
 
     @Provides
     @Singleton
-    fun providesDatabase(context: Context): BiiDatabase = Room.databaseBuilder(context, BiiDatabase::class.java,
-            BiiDatabase.NAME).build()
+    fun providesDatabase(context: Context): BiiDatabase = Room.databaseBuilder(context,
+            BiiDatabase::class.java, BiiDatabase.NAME).build()
+
+    @Provides
+    @Singleton
+    fun providesLocalCountryDAO(database: BiiDatabase): LocalCountryDAO = database.countryDAO()
+
+    @Provides
+    @Singleton
+    fun providesLocalGenreDAO(database: BiiDatabase): LocalGenreDAO = database.genreDAO()
+
+    @Provides
+    @Singleton
+    fun providesLocalMovieDAO(database: BiiDatabase): LocalMovieDAO = database.movieDAO()
 }
 
 @Module

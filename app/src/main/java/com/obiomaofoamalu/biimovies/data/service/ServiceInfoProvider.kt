@@ -1,4 +1,4 @@
-package com.obiomaofoamalu.biimovies.service
+package com.obiomaofoamalu.biimovies.data.service
 
 import android.content.res.Resources
 import com.obiomaofoamalu.biimovies.R

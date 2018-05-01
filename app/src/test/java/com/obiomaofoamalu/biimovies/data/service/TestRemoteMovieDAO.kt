@@ -1,4 +1,4 @@
-package com.obiomaofoamalu.biimovies.service
+package com.obiomaofoamalu.biimovies.data.service
 
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
