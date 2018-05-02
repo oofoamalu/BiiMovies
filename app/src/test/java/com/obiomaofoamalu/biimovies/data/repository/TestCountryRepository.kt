@@ -37,6 +37,6 @@ class TestCountryRepository {
         mRepository.getCountries()
 
         // THEN verify that returned countries was saved in database
-        verify(mLocalCountryDAO, timeout(0)).saveCountries(countries)
+        verify(mLocalCountryDAO, timeout(1)).saveCountries(countries)
     }
 }
