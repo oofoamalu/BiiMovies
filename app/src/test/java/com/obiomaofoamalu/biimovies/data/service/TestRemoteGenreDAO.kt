@@ -6,8 +6,10 @@ import io.reactivex.observers.TestObserver
 import junit.framework.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
 class TestRemoteGenreDAO {
@@ -26,27 +28,25 @@ class TestRemoteGenreDAO {
 
     @Test
     fun getGenres() {
-        // GIVEN a test observer
-        val testObserver = TestObserver<GenreResponse>()
+        // GIVEN  a testObserver
+        val testObserver = TestObserver<ArrayList<Genre>>()
+        // GIVEN that mService.getGenres() returns an Observable of genreResponse
+        val genreResponses = GenreResponse(arrayListOf(Genre(1, "Action")))
+        Mockito.`when`(mService.getGenres(anyString())).thenReturn(Observable.just(genreResponses))
 
-        // WHEN we call getGenres() and subscribe to it
+        // WHEN we get genres from remote server and subscribe
         mRemoteGenreDAO.getGenres()
                 .safeSubscribe(testObserver)
 
-        // THEN assert that one item was emitted
-        testObserver.assertValueCount(1)
-        // THEN assert that emitted item was GenreResponse
-        val result = testObserver.values()[0]
-        assertTrue(result is GenreResponse)
+        // THEN assert that a list of Genre was emitted
+        testObserver.assertValue(arrayListOf(Genre(1, "Action")))
+        // THEN verify that mService.getGenres() was called
+        verify(mService).getGenres(anyString())
     }
 
     private fun initMockBehaviour() {
         val apiKey = "aisoiajoaoije9092"
-        val genre = Genre(1, "Action")
-        val genreResponse = GenreResponse(arrayListOf(genre))
-        val genreObservable = Observable.just(genreResponse)
 
         Mockito.`when`(mServiceInfoProvider.getApiKey()).thenReturn(apiKey)
-        Mockito.`when`(mService.getGenres(apiKey)).thenReturn(genreObservable)
     }
 }

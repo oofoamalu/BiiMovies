@@ -7,6 +7,8 @@ import com.obiomaofoamalu.biimovies.data.service.RemoteGenreDAO
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+//region COUNTRY REPOSITORY ------------------------------------------------------------------------
+
 class CountryRepository @Inject constructor(private val mRemoteCountryDAO: RemoteCountryDAO,
                                             private val mLocalCountryDAO: LocalCountryDAO) {
 
@@ -17,6 +19,10 @@ class CountryRepository @Inject constructor(private val mRemoteCountryDAO: Remot
     }
 }
 
+//endregion
+
+//region GENRE REPOSITORY --------------------------------------------------------------------------
+
 class GenreRepository @Inject constructor(private val mRemoteGenreDAO: RemoteGenreDAO,
                                           private val mLocalGenreDAO: LocalGenreDAO) {
     fun getGenres() {
@@ -25,3 +31,5 @@ class GenreRepository @Inject constructor(private val mRemoteGenreDAO: RemoteGen
                 .subscribe { genres -> mLocalGenreDAO.saveGenres(genres) }
     }
 }
+
+//endregion

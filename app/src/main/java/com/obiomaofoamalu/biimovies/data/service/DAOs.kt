@@ -7,6 +7,8 @@ import io.reactivex.Observable
 import java.util.*
 import javax.inject.Inject
 
+//region REMOTE MOVIE DAO --------------------------------------------------------------------------
+
 class RemoteMovieDAO @Inject constructor(private val mBiiService: BiiService,
                                          private val mServiceInfoProvider: ServiceInfoProvider) {
 
@@ -17,12 +19,21 @@ class RemoteMovieDAO @Inject constructor(private val mBiiService: BiiService,
 
 }
 
+//endregion
+
+//region REMOTE GENRE DAO --------------------------------------------------------------------------
+
 class RemoteGenreDAO @Inject constructor(private val mBiiService: BiiService,
                                          private val mServiceInfoProvider: ServiceInfoProvider) {
 
-    fun getGenres(): Observable<ArrayList<Genre>> = mBiiService.getGenres(mServiceInfoProvider.getApiKey())
-            .map { genreResponse -> genreResponse.genres }
+    fun getGenres(): Observable<ArrayList<Genre>> =
+            mBiiService.getGenres(mServiceInfoProvider.getApiKey())
+                    .map { genreResponse -> genreResponse.genres }
 }
+
+//endregion
+
+//region REMOTE COUNTRY DAO ------------------------------------------------------------------------
 
 class RemoteCountryDAO @Inject constructor(private val mBiiService: BiiService,
                                            private val mServiceInfoProvider: ServiceInfoProvider) {
@@ -44,3 +55,5 @@ class RemoteCountryDAO @Inject constructor(private val mBiiService: BiiService,
         return Observable.fromArray(countries)
     }
 }
+
+//endregion
