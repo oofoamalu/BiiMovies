@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.timeout
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
@@ -36,6 +37,6 @@ class TestCountryRepository {
         mRepository.getCountries()
 
         // THEN verify that returned countries was saved in database
-        verify(mLocalCountryDAO).saveCountries(countries)
+        verify(mLocalCountryDAO, timeout(0)).saveCountries(countries)
     }
 }

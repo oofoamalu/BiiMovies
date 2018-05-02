@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.timeout
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
@@ -36,6 +37,6 @@ class TestGenreRepository {
         mRepository.getGenres()
 
         // THEN verify that returned genres was saved to database
-        verify(mLocalGenreDAO).saveGenres(genres)
+        verify(mLocalGenreDAO, timeout(0)).saveGenres(genres)
     }
 }
