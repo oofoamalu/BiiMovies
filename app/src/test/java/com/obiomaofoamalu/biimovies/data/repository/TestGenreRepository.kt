@@ -37,6 +37,6 @@ class TestGenreRepository {
         mRepository.getGenres()
 
         // THEN verify that returned genres was saved to database
-        verify(mLocalGenreDAO, timeout(0)).saveGenres(genres)
+        verify(mLocalGenreDAO, timeout(1)).saveGenres(genres)
     }
 }
