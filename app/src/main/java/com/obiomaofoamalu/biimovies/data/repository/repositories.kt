@@ -17,6 +17,13 @@ class CountryRepository @Inject constructor(private val mRemoteCountryDAO: Remot
                 .subscribeOn(Schedulers.io())
                 .subscribe { countries -> mLocalCountryDAO.saveCountries(countries) }
     }
+
+    fun hasCountries(): Boolean {
+        return mLocalCountryDAO.getCountries()
+                .subscribeOn(Schedulers.io())
+                .blockingGet()
+                .isNotEmpty()
+    }
 }
 
 //endregion
@@ -29,6 +36,13 @@ class GenreRepository @Inject constructor(private val mRemoteGenreDAO: RemoteGen
         mRemoteGenreDAO.getGenres()
                 .subscribeOn(Schedulers.io())
                 .subscribe { genres -> mLocalGenreDAO.saveGenres(genres) }
+    }
+
+    fun hasGenres(): Boolean {
+        return mLocalGenreDAO.getGenres()
+                .subscribeOn(Schedulers.io())
+                .blockingGet()
+                .isNotEmpty()
     }
 }
 
