@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_screen_padding">16dp</dimen>
+
+    <!-- Launch Activity -->
+    <dimen name="launch_screen_padding">64dp</dimen>
 </resources>
