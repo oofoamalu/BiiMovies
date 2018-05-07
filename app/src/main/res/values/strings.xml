@@ -2,4 +2,7 @@
     <string name="app_name">BiiMovies</string>
     <string name="api_key">b61967ad00f7ba1d19ac793d904ef1c3</string>
     <string name="base_url">https://api.themoviedb.org/3/</string>
+
+    <!-- Launch Activity -->
+    <string name="browse_movies">Browse Movies</string>
 </resources>
