@@ -3,6 +3,7 @@ package com.obiomaofoamalu.biimovies.data.service
 import android.support.annotation.VisibleForTesting
 import com.obiomaofoamalu.biimovies.data.database.Country
 import com.obiomaofoamalu.biimovies.data.database.Genre
+import com.obiomaofoamalu.biimovies.data.database.Movie
 import io.reactivex.Observable
 import java.util.*
 import javax.inject.Inject
@@ -13,10 +14,29 @@ class RemoteMovieDAO @Inject constructor(private val mBiiService: BiiService,
                                          private val mServiceInfoProvider: ServiceInfoProvider) {
 
     fun getMovies() = mBiiService.getMovies(mServiceInfoProvider.getApiKey())
+            .map { movieResponse -> movieResponse.movies }
+            .flatMap { movieResponseList -> listOfMovie(movieResponseList) }
 
     fun getMovieDetails(movieId: Int) =
             mBiiService.getMovieDetails(movieId, mServiceInfoProvider.getApiKey())
 
+    @VisibleForTesting
+    fun listOfMovie(movieResponseList: ArrayList<MovieResponse>): Observable<ArrayList<Movie>> {
+        val movies = ArrayList<Movie>(movieResponseList.size)
+
+        for (movieResponse in movieResponseList) {
+            movies.add(
+                    Movie(movieResponse.id, movieResponse.title, movieResponse.description,
+                            movieResponse.posterPath, 0, getYear(movieResponse.releaseDate),
+                            movieResponse.rating, movieResponse.backdropPath,
+                            movieResponse.genreIds, arrayListOf()))
+        }
+
+        return Observable.fromArray(movies)
+    }
+
+    @VisibleForTesting
+    fun getYear(releaseDate: String) = releaseDate.take(4).toInt()
 }
 
 //endregion

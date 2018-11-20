@@ -1,6 +1,7 @@
 package com.obiomaofoamalu.biimovies.injection
 
 import com.obiomaofoamalu.biimovies.launch.LaunchActivity
+import com.obiomaofoamalu.biimovies.movielist.MovieList
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,4 +10,5 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 
     fun inject(activity: LaunchActivity)
+    fun inject(activity: MovieList)
 }

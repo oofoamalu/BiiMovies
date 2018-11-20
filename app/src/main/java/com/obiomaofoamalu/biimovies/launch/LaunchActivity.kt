@@ -3,10 +3,10 @@ package com.obiomaofoamalu.biimovies.launch
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.obiomaofoamalu.biimovies.R
 import com.obiomaofoamalu.biimovies.databinding.ActivityLaunchBinding
 import com.obiomaofoamalu.biimovies.injection.Injector
+import com.obiomaofoamalu.biimovies.movielist.MovieList
 import javax.inject.Inject
 
 class LaunchActivity : AppCompatActivity() {
@@ -42,21 +42,11 @@ class LaunchActivity : AppCompatActivity() {
 
     //endregion
 
-    //region LISTENERS -----------------------------------------------------------------------------
-
-    private class BrowseMoviesClickListener : View.OnClickListener {
-        override fun onClick(view: View) {
-            //todo: open movie list
-        }
-    }
-
-    //endregion
-
     //region PRIVATE CLASS METHODS -----------------------------------------------------------------
 
     private fun initView() {
         mBinding.browseMovies
-                .setOnClickListener(BrowseMoviesClickListener())
+                .setOnClickListener { MovieList.start(this)}
     }
 
     //endregion

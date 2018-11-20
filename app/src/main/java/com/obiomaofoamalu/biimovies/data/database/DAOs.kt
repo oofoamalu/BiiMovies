@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
+import io.reactivex.Flowable
 import io.reactivex.Maybe
 
 @Dao
@@ -11,6 +12,9 @@ interface LocalMovieDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveMovies(movies: List<Movie>)
+
+    @Query("SELECT id, title, releaseYear, rating, posterPath FROM Movies")
+    fun getMovies(): Flowable<List<Movie>>
 }
 
 @Dao

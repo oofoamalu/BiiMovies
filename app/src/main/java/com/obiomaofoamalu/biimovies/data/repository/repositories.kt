@@ -2,8 +2,12 @@ package com.obiomaofoamalu.biimovies.data.repository
 
 import com.obiomaofoamalu.biimovies.data.database.LocalCountryDAO
 import com.obiomaofoamalu.biimovies.data.database.LocalGenreDAO
+import com.obiomaofoamalu.biimovies.data.database.LocalMovieDAO
+import com.obiomaofoamalu.biimovies.data.database.Movie
 import com.obiomaofoamalu.biimovies.data.service.RemoteCountryDAO
 import com.obiomaofoamalu.biimovies.data.service.RemoteGenreDAO
+import com.obiomaofoamalu.biimovies.data.service.RemoteMovieDAO
+import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -46,4 +50,23 @@ class GenreRepository @Inject constructor(private val mRemoteGenreDAO: RemoteGen
     }
 }
 
+//endregion
+
+//region MOVIE REPOSITORY --------------------------------------------------------------------------
+
+class MovieRepository @Inject constructor(private val mRemoteMovieDAO: RemoteMovieDAO,
+                                          private val mLocalMovieDAO: LocalMovieDAO) {
+
+    fun getMovies() {
+        //todo: include pagination
+        mRemoteMovieDAO.getMovies()
+                .subscribeOn(Schedulers.io())
+                .subscribe { movies -> mLocalMovieDAO.saveMovies(movies) }
+    }
+
+    fun getMovieListData(): Flowable<List<Movie>> {
+        return mLocalMovieDAO.getMovies()
+                .subscribeOn(Schedulers.io())
+    }
+}
 //endregion
