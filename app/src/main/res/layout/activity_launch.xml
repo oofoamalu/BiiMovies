@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.obiomaofoamalu.biimovies.launch.LaunchActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/browseMoviesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/browse_button_margin_button"
+        android:background="@color/colorPrimaryLight"
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="@dimen/browse_button_padding_left"
+        android:paddingRight="@dimen/browse_button_padding_right"
+        android:text="@string/browse_movies"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/browse_button_text_size" />
 
-</LinearLayout>
+</FrameLayout>
