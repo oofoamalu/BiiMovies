@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">BiiMovies</string>
+    <string name="api_key">b61967ad00f7ba1d19ac793d904ef1c3</string>
 
     <!-- Launch Activity -->
     <string name="browse_movies">Browse Movies</string>
+
+    <!-- Movie List Fragment -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
