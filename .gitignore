@@ -6,6 +6,8 @@
 /.idea/caches
 /.idea/codeStyles
 /.idea/vcs.xml
+/.idea/misc.xml
+/.idea/inspectionProfiles/
 .DS_Store
 /build
 /captures
